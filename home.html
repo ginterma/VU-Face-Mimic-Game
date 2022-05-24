@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Smart Emotion Recognition</title>
+    <link rel="stylesheet" href="css/home.css" />
+    <script defer src="scripts/face-api.min.js"></script>
+    <script defer src="scripts/recognizeEmotions.js"></script>
+    <script> 
+      $.support.cors = true;
+  </script>
+  </head>
+
+  <body>
+    <p id="title">
+      Smart Emotion Recognition<br />
+      <span id="smaller">by Justas Leščinskas</span>
+    </p>
+    <div id="main">
+      <video id="video" width="720" height="560" autoplay muted></video>
+      <canvas id="canvas" width="720" height="560"></canvas>
+      <br />
+
+      <div class="container">
+        <div class="functions">
+          <br />
+          <div id="checkBoxField">
+            <input
+              type="checkbox"
+              id="landMarkCheckBox"
+              name="landMark"
+              checked
+            />
+            <label for="landMark">Landmark toggle</label>
+          </div>
+          <br />
+          <div id="checkBoxField">
+            <input
+              type="checkbox"
+              id="detectionCheckBox"
+              name="detection"
+              checked
+            />
+            <label for="detection">Bounding box toggle</label>
+          </div>
+        </div>
+        <div class="status">
+          <button id="startRecordingbtn" onclick="startRecording()">
+            Start recording
+          </button>
+          <p id="recordingStatus">Recording is currently off.</p>
+        </div>
+        <div class="tableContent">
+          <table id="emotionTable">
+            <thead>
+              <tr>
+                <th>EMOTION</th>
+                <th>VALUE</th>
+              </tr>
+            </thead>
+            <tbody id="tableData"></tbody>
+          </table>
+        </div>
+        <div class="infoContent">
+          <p>
+            To start recording emotions, click on "start recording". The
+            application will then record your emotions for 10 seconds and update
+            the table on the right based on your expressions.
+          </p>
+          
+        </div>
+        <a href="game.html"><button class="game-button1">Face Mimic Game</button>
+        </a>
+        
+      </div>
+    </div>
+  </body>
+</html>

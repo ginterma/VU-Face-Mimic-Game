@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <link rel="stylesheet" href="css/game.css" />
+    <script   defer src="scripts/face-api.min.js"></script>
+    <script type="module" defer src="scripts/faceMimicGame.js"></script>
+    <script> 
+      $.support.cors = true;
+  </script>
+  <title>Face Mimic Game</title>
+  </head>
+
+  <body>
+    <p id="title">
+      Face Mimic Game<br />
+      <span id="smaller">by Gintaras Marčiukonis</span>
+    </p>
+    <div class="container-game">
+    <canvas id="canvas">
+    </canvas>
+    <div id="first-box">
+      <img id="photo" alt="The screen capture will appear in this box.">
+<div class="tableContent">
+  <table id="emotionTable">
+    <thead>
+      <tr>
+        <th>EMOTION</th>
+        <th>VALUE</th>
+      </tr>
+    </thead>
+    <tbody id="takenImageData"></tbody>
+  </table>
+</div>
+<div class="infoBox">
+  <h3>Face mimic game!</h3>
+<p class="info">
+  The purpose of this game is to mimic displayed emotion on the right and aim to achieve as high as possible High Score.
+  <br> With each consecutive level, difficulty of game increases.
+</p>
+</div>
+</div>
+<div id="second-box">
+  <video id="video">Video stream not available.</video>
+  <br>
+    <button id="startbutton">Take photo</button>
+  <br>
+  <button id="start-game-button" class="game-button">Start game</button>
+  <button id="next-level-button" class="game-button">Next level</button>
+  <div id="game-info">
+
+  <h3 id="max-game-level" class="max-game-level"></h3>
+  <h3 id="game-level" class="game-level"></h3>
+  <div class="countdown">
+    <h3 id="second" class="seconds">
+    </h3>
+    <p id="result-text" class="result-text"></p>
+  </div>
+  </div>
+</div>
+<div id="third-box">
+  <img id="imageUploadId" height="300" width="600">
+  <div class="tableContent">
+    <table id="emotionTable">
+      <thead>
+        <tr>
+          <th>EMOTION</th>
+          <th>VALUE</th>
+        </tr>
+      </thead>
+      <tbody id="gameImageData"></tbody>
+    </table>
+  </div>
+  <div class="infoBox2">
+    <h3 class="infoh3">How to play:</h3>
+  <p class="info">
+    * Press Start Game button. <br>
+    * During given time limit take photo of your emotion by clicking Take Photo button on camera view. <br>
+    * If both emotions are similar enough then player proceeds to the next level by pressing Next Level button. <br>
+    * If emotions are not similar enough then player can start again from level 1 by pressing Start Game button. <br>
+  </p>
+  <h3 class="infoh3">Good luck!</h3>
+  </div>
+</div><a href="home.html">
+<button class="game-button1" >Smart Emotion Recognition</button>
+</a>
+</div>
+  </body>
+  
+</html>
