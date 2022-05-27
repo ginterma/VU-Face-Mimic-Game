@@ -30,14 +30,11 @@ var photo = null;
 var startbutton = null;
 
 Promise.all([
-  faceapi.nets.tinyFaceDetector.loadFromUri("/models"),
-  faceapi.nets.faceLandmark68Net.loadFromUri("/models"),
-  faceapi.nets.faceRecognitionNet.loadFromUri("/models"),
   faceapi.nets.faceExpressionNet.loadFromUri("/models"),
   faceapi.nets.ssdMobilenetv1.loadFromUri("/models")
-]).then(start);
+]).then(startGame);
 
-
+window.addEventListener('load', startCamera, false);
 function getRandomInt(max) {
   return Math.floor(Math.random() * max);
 }
@@ -71,7 +68,7 @@ function countDown(){
         nextLevelButton.addEventListener('click', async() =>{
           nextLevelButton.style.visibility ='hidden'
           if(canvas) canvas.remove()
-          clearphoto()
+          clearPhoto()
           isPersonInPhoto = false;
           emptyTable("takenImageData")
           changePhoto()
@@ -93,7 +90,7 @@ function countDown(){
     startGameButton.addEventListener('click', async() =>{
         interval = setInterval(countDown,1000)
         if(canvas) canvas.remove()
-        clearphoto()
+        clearPhoto()
         isPersonInPhoto = false;
         emptyTable("takenImageData")
         changePhoto()
@@ -104,7 +101,7 @@ function countDown(){
 }
 }
 
-function start(){
+function startGame(){
   const controller = new AbortController();
   emptyTable("gameImageData")
   
@@ -134,8 +131,7 @@ async function changePhoto(){
   container.append(detectionCanvas)
   const displaySize = {width: image.width, height: image.height}
   faceapi.matchDimensions(detectionCanvas,displaySize)
-  const detections = await faceapi.detectAllFaces(image)
-  .withFaceLandmarks().withFaceDescriptors().withFaceExpressions()
+  const detections = await faceapi.detectAllFaces(image).withFaceExpressions()
   const resizedDetections = faceapi.resizeResults(detections,displaySize)
   resizedDetections.forEach(detection =>{
     const box = detection.detection.box
@@ -158,9 +154,9 @@ async function changePhoto(){
 else{ emptyTable("gameImageData")}
 
 }
-window.addEventListener('load', startup, false);
 
-function startup() {
+
+function startCamera() {
   const container = document.getElementById('first-box')
   container.style.position = 'relative'
 
@@ -200,8 +196,7 @@ video.width= 510;
     canvas = faceapi.createCanvasFromMedia(image)
     faceapi.matchDimensions(canvas,displaySize)
     container.append(canvas)
-    const detections =  await faceapi.detectAllFaces(image)
-    .withFaceLandmarks().withFaceDescriptors().withFaceExpressions()
+    const detections =  await faceapi.detectAllFaces(image).withFaceExpressions()
     const resizedDetections = faceapi.resizeResults(detections,displaySize)
     resizedDetections.forEach(detection =>{
       const box = detection.detection.box
@@ -228,7 +223,7 @@ video.width= 510;
   }
   }, false);
 
-  clearphoto();
+  clearPhoto();
 }
 function checkEmotions(){
   var emotionDifferenceValue = 0; 
@@ -241,7 +236,7 @@ function checkEmotions(){
   return emotionDifferenceValue;
 }
 
-function clearphoto() {
+function clearPhoto() {
   console.log('3')
   var context = photoCanvas.getContext('2d');
   context.clearRect(0, 0, photoCanvas.width, photoCanvas.height);
@@ -263,7 +258,7 @@ function takepicture() {
 
   
   } else {
-    clearphoto();
+    clearPhoto();
   }
 }
 
