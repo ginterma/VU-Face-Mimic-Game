@@ -53,8 +53,6 @@ function countDown(){
     textSeconds = currentTimeLimit
     clearInterval(interval)
     if(checkLevel(checkEmotions())){
-      console.log(currentTimeLimit)
-      console.log(emotionValueLimit)
       increaseDificulty()
       level ++
       if(level > maxLvl) maxLvl=level;
@@ -118,8 +116,8 @@ async function changePhoto(){
   const container = document.getElementById('third-box')
   container.style.position = 'relative'
 
-  var yes = 69000 + getRandomInt(1000);
-  var imageString = '/faces/' + yes.toString() +'.png';
+  var imageNumber = 69000 + getRandomInt(300);
+  var imageString = '/faces/' + imageNumber.toString() +'.png';
   const image = await faceapi.fetchImage([imageString])
   if(detectionCanvas) {
     console.log('removed');
@@ -228,12 +226,19 @@ video.width= 510;
 function checkEmotions(){
   var emotionDifferenceValue = 0; 
   for(var emotion in allEmotions){
-    emotionDifferenceValue = emotionDifferenceValue + (Math.abs((Math.round(givenExpressions[allEmotions[emotion]] * 100)) - 
-  (Math.round(takenExpressions[allEmotions[emotion]] * 100))))
-  console.log(takenExpressions[allEmotions[emotion]])
+    emotionDifferenceValue = emotionDifferenceValue + 
+  (Math.abs((Math.round(givenExpressions[allEmotions[emotion]] * 100)) - (Math.round(takenExpressions[allEmotions[emotion]] * 100))))
   }
-  console.log(emotionDifferenceValue)
   return emotionDifferenceValue;
+}
+function checkLevel(emotionValue){
+  if(!isPersonInPhoto) return false
+  if (emotionValue > emotionValueLimit) return false
+  else return true;
+}
+function increaseDificulty(){
+  if(emotionValueLimit > 65) emotionValueLimit --;
+  if(level % 2 == 0 && currentTimeLimit > 6) currentTimeLimit --;
 }
 
 function clearPhoto() {
@@ -264,15 +269,8 @@ function takepicture() {
 
 
 
-function checkLevel(emotionValue){
-  if(!isPersonInPhoto) return false
-  if (emotionValue > emotionValueLimit) return false
-  else return true;
-}
-function increaseDificulty(){
-  if(emotionValueLimit > 65) emotionValueLimit --;
-  if(level % 2 == 0) currentTimeLimit --;
-}
+
+
 
 
 function createTable(tableName, expressions) {

@@ -11,7 +11,7 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    background-color: rgb(255, 249, 221);
+    background-color: #EDE0E7;
   }
   canvas {
     position: absolute;
@@ -33,8 +33,8 @@
     font-size: 50px;
     text-align: center;
     font-family: "Impact";
-    color:  rgb(255, 249, 221);
-    background-color:rgb(217, 121, 4);
+    color:  black;
+    background-color:none;
     line-height: 0.7;
     margin: 0xp;
   }
@@ -79,13 +79,13 @@
   body {
     height: 100%;
     width: 840px;
-    background-color: rgb(217, 121, 4);
+    background-color: #BED8E2;
   }
   
   html {
     display: table;
     margin: auto;
-    background-color: rgb(217, 121, 4);
+    background-color: #BED8E2;
   }
   
   .infoContent {
@@ -108,7 +108,7 @@
   .container-game{
     width:2000px;
     height:1620px;
-    background-color: rgb(217, 121, 4);
+    background-color: #BED8E2;
     margin-top: -45px;
     padding-top:20px;
     padding-left:15px;
@@ -120,7 +120,7 @@
     float:left;
     width:600px;
     height:900px;
-    background-color:rgb(255, 249, 221);
+    background-color:#EDE0E7;
     border:solid black;
 
   }
@@ -128,7 +128,7 @@
     float:left;
     width:510px;
     height:900px;
-    background-color:rgb(255, 249, 221);
+    background-color:#EDE0E7;
     border:solid black;
     margin-left:130px;
 
@@ -137,7 +137,7 @@
     float:right;
     width:600px;
     height:900px;
-    background-color:rgb(255, 249, 221);
+    background-color:#EDE0E7;
     border:solid black;
 
   }
@@ -268,7 +268,7 @@
     margin-left: 55px;
     width:400px;
     height:400px;
-    background-color:rgb(255, 249, 221);
+    background-color:#EDE0E7;
     border:solid black;
   }
   
